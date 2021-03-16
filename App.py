@@ -110,7 +110,7 @@ def createAudio():
        
        songName = fileMetaData['song name']
        songDuration = fileMetaData['duration']
-       uploadTime = now.strftime("%m/%d/%Y, %H:%M")
+       uploadTime = datetime.now()
        new_song = Song(songName, songDuration, uploadTime)
        db.session.add(new_song)
        db.session.commit()
@@ -121,7 +121,7 @@ def createAudio():
       podcastName = fileMetaData['podcast name']
       podcastDuration = fileMetaData['duration']
       participant = fileMetaData['participants']
-      uploadTime = now.strftime("%m/%d/%Y, %H:%M")
+      uploadTime = datetime.now()
       new_podcast = Podcast(podcastName, podcastDuration,uploadTime,participant)
       
       
@@ -135,7 +135,7 @@ def createAudio():
       author = fileMetaData['author']
       narrator = fileMetaData['narrator']
       duration = fileMetaData['duration']
-      uploadTime = now.strftime("%m/%d/%Y, %H:%M")
+      uploadTime = datetime.now()
       new_book = AudioBook(title,author,narrator,duration,uploadTime)
       db.session.add(new_book)
       db.session.commit()
@@ -200,7 +200,7 @@ def updateAudioById(audioType, id):
       single_song = Song.query.get(id)
       songName = request.json['songName']
       duration = request.json['songDuration']
-      uploadTime = now.strftime("%m/%d/%Y, %H:%M")
+      uploadTime = datetime.now()
 
       single_song.songName = songName
       single_song.songDuration = duration
@@ -214,7 +214,7 @@ def updateAudioById(audioType, id):
       single_podcast = Podcast.query.get(id)
       podcastName = request.json['podcastName']
       duration = request.json['podcastDuration']
-      uploadTime =now.strftime("%m/%d/%Y, %H:%M")
+      uploadTime = datetime.now()
       participant = request.json['participants']
 
       single_podcast.podcastName = podcastName
@@ -231,7 +231,7 @@ def updateAudioById(audioType, id):
       author = request.json['author']
       narrator = request.json['narrator']
       duration = request.json['duration']
-      uploadTime = now.strftime("%m/%d/%Y, %H:%M")
+      uploadTime = datetime.now()
 
       single_book.title = title
       single_book.author = author
